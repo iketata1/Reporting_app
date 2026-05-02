@@ -16,6 +16,7 @@ function ReportList() {
 
   useEffect(() => {
     fetchReports();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
   const fetchReports = async () => {

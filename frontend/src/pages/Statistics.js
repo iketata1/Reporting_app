@@ -19,6 +19,7 @@ function Statistics() {
     if (selectedBuilding) {
       calculateBuildingStats(selectedBuilding);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedBuilding, reports]);
 
   const fetchReports = async () => {
