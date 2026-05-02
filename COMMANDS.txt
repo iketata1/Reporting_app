@@ -1,0 +1,107 @@
+===========================================
+📋 COMMANDES À COPIER-COLLER
+===========================================
+
+# 1. VÉRIFIER GIT
+git --version
+
+# 2. INITIALISER GIT (dans ton dossier projet)
+cd D:/Reporting_app
+git init
+git add .
+git commit -m "Initial commit - Ready for deployment"
+
+# 3. CONNECTER À GITHUB (remplacer TON_USERNAME par ton username GitHub)
+git remote add origin https://github.com/TON_USERNAME/reporting-app.git
+git branch -M main
+git push -u origin main
+
+# 4. INSTALLER CLOUDINARY (dans le dossier backend)
+cd backend
+npm install cloudinary multer-storage-cloudinary
+
+# 5. POUR METTRE À JOUR PLUS TARD
+git add .
+git commit -m "Update application"
+git push
+
+===========================================
+🔑 VARIABLES D'ENVIRONNEMENT VERCEL
+===========================================
+
+Copier ces variables dans Vercel → Settings → Environment Variables:
+
+MONGODB_URI
+mongodb+srv://TON_USER:TON_PASSWORD@cluster.mongodb.net/reporting_app
+
+JWT_SECRET
+mySecretKey123456789abcdefghijklmnopqrstuvwxyz
+
+NODE_ENV
+production
+
+PORT
+5002
+
+CLOUDINARY_CLOUD_NAME
+ton_cloud_name_ici
+
+CLOUDINARY_API_KEY
+ton_api_key_ici
+
+CLOUDINARY_API_SECRET
+ton_api_secret_ici
+
+===========================================
+⚙️ BUILD SETTINGS VERCEL
+===========================================
+
+Framework Preset: Other
+
+Build Command:
+cd frontend && npm install && npm run build
+
+Output Directory:
+frontend/build
+
+Install Command:
+npm install
+
+Root Directory:
+./
+
+===========================================
+👤 COMPTES À CRÉER
+===========================================
+
+1. GitHub: https://github.com/signup
+2. Vercel: https://vercel.com/signup (connecter avec GitHub)
+3. Cloudinary: https://cloudinary.com/users/register/free
+
+===========================================
+🔗 LIENS UTILES
+===========================================
+
+MongoDB Atlas: https://cloud.mongodb.com
+Vercel Dashboard: https://vercel.com/dashboard
+Cloudinary Console: https://cloudinary.com/console
+GitHub Repos: https://github.com/TON_USERNAME?tab=repositories
+
+===========================================
+✅ COMPTE ADMIN POUR TON BOSS
+===========================================
+
+URL: https://ton-app.vercel.app
+
+Email: admin@intraair.com
+Password: admin
+
+===========================================
+📞 SUPPORT
+===========================================
+
+Vercel Logs: https://vercel.com/dashboard → Deployments → Logs
+MongoDB Metrics: MongoDB Atlas → Metrics
+Cloudinary Usage: Cloudinary → Dashboard
+
+===========================================

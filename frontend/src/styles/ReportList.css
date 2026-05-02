@@ -1,0 +1,80 @@
+.report-list {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.filters {
+  background: white;
+  padding: 20px 40px;
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filters select,
+.filters input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.filters select:focus,
+.filters input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.reports-table {
+  width: 100%;
+  background: white;
+  margin: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.reports-table th {
+  text-align: left;
+  padding: 15px;
+  background: #f8f9fa;
+  color: #666;
+  font-weight: 600;
+}
+
+.reports-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.reports-table tr:last-child td {
+  border-bottom: none;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.actions button {
+  padding: 6px 12px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.actions button:hover {
+  background: #5568d3;
+}
+
+.actions .delete-btn {
+  background: #dc3545;
+}
+
+.actions .delete-btn:hover {
+  background: #c82333;
+}
