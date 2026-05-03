@@ -10,7 +10,9 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://reporting-app-3ru4.vercel.app', 'https://reporting-app-3ru4-git-main-iketata1s-projects.vercel.app']
+    : 'http://localhost:3000',
   credentials: true
 }));
 app.use(express.json());
@@ -40,8 +42,10 @@ mongoose.connect(process.env.MONGODB_URI, {
   console.error('Retrying connection...');
 });
 
-// Serve uploaded files from D drive
-app.use('/uploads', express.static('D:/Reporting_app_uploads'));
+// Serve uploaded files (Cloudinary in production)
+if (process.env.NODE_ENV !== 'production') {
+  app.use('/uploads', express.static('D:/Reporting_app_uploads'));
+}
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
@@ -69,9 +73,13 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`MongoDB URI: ${process.env.MONGODB_URI}`);
-});
+
+// Only start server if not in Vercel (Vercel uses serverless)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`MongoDB URI: ${process.env.MONGODB_URI}`);
+  });
+}
 
 module.exports = app;
