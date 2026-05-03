@@ -19,7 +19,14 @@
       "dest": "/api/index.js"
     },
     {
-      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))",
+      "src": "/static/(.*)",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      },
+      "dest": "/frontend/build/static/$1"
+    },
+    {
+      "src": "/(.*\\.(ico|png|jpg|jpeg|gif|svg))",
       "dest": "/frontend/build/$1"
     },
     {
