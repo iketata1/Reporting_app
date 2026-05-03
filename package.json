@@ -4,8 +4,8 @@
   "description": "Professional Reporting Application",
   "main": "backend/server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "nodemon backend/server.js",
+    "start": "node backend/server-dev.js",
+    "dev": "nodemon backend/server-dev.js",
     "client": "cd frontend && npm start",
     "install-all": "npm install && cd frontend && npm install",
     "test-db": "node test-connection.js"
