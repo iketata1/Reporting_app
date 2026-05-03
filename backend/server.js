@@ -11,7 +11,7 @@ const app = express();
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://reporting-app-3ru4.vercel.app', 'https://reporting-app-3ru4-git-main-iketata1s-projects.vercel.app']
+    ? ['https://reporting-app-eta.vercel.app', 'https://reporting-app-eta-git-main-iketata1s-projects.vercel.app', /\.vercel\.app$/]
     : 'http://localhost:3000',
   credentials: true
 }));
