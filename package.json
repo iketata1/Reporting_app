@@ -8,7 +8,8 @@
     "dev": "nodemon backend/server-dev.js",
     "client": "cd frontend && npm start",
     "install-all": "npm install && cd frontend && npm install",
-    "test-db": "node test-connection.js"
+    "test-db": "node test-connection.js",
+    "vercel-build": "cd frontend && npm install && npm run build"
   },
   "keywords": ["reporting", "dashboard", "analytics"],
   "author": "",
