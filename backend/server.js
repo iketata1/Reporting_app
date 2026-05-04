@@ -1,8 +1,8 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
+const connectDB = require('./config/mongodb');
 
 dotenv.config();
 
@@ -24,21 +24,15 @@ app.use((req, res, next) => {
   next();
 });
 
-// Database connection
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 15000,
-  socketTimeoutMS: 45000,
-  family: 4,
-  maxPoolSize: 10,
-  minPoolSize: 2
-})
-.then(() => {
-  console.log('MongoDB connected successfully');
-})
-.catch(err => {
-  console.error('MongoDB connection error:', err);
+// Connect to MongoDB before handling requests
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    console.error('Database connection failed:', error);
+    res.status(500).json({ message: 'Database connection failed' });
+  }
 });
 
 // Serve uploaded files (Cloudinary in production)
