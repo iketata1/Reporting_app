@@ -4,13 +4,15 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-// Create uploads directory on D drive if it doesn't exist
+// Create uploads directory on D drive if it doesn't exist (only in development)
 const uploadsDir = 'D:/Reporting_app_uploads';
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
+if (process.env.NODE_ENV !== 'production') {
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  }
 }
 
-// Configure multer storage
+// Configure multer storage (only used in development, production uses Cloudinary)
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, uploadsDir);
