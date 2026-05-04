@@ -4,14 +4,25 @@ const ExcelJS = require('exceljs');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const os = require('os');
 
 // Helper function to load image (from local or Cloudinary)
 async function loadImage(fileUrl) {
   // Check if it's a Cloudinary URL
   if (fileUrl.startsWith('http://') || fileUrl.startsWith('https://')) {
     try {
+      console.log('Downloading image from Cloudinary:', fileUrl);
       const response = await axios.get(fileUrl, { responseType: 'arraybuffer' });
-      return Buffer.from(response.data);
+      
+      // Save to temp file
+      const tempDir = os.tmpdir();
+      const tempFileName = `temp-${Date.now()}-${Math.random().toString(36).substring(7)}.jpg`;
+      const tempFilePath = path.join(tempDir, tempFileName);
+      
+      fs.writeFileSync(tempFilePath, Buffer.from(response.data));
+      console.log('Image saved to temp file:', tempFilePath);
+      
+      return tempFilePath;
     } catch (error) {
       console.error('Error downloading image from Cloudinary:', error.message);
       return null;
@@ -23,7 +34,20 @@ async function loadImage(fileUrl) {
     if (fs.existsSync(imagePath)) {
       return imagePath;
     }
+    console.error('Local image not found:', imagePath);
     return null;
+  }
+}
+
+// Helper function to clean up temp files
+function cleanupTempFile(filePath) {
+  if (filePath && filePath.includes(os.tmpdir())) {
+    try {
+      fs.unlinkSync(filePath);
+      console.log('Cleaned up temp file:', filePath);
+    } catch (error) {
+      console.error('Error cleaning up temp file:', error.message);
+    }
   }
 }
 
@@ -817,6 +841,8 @@ exports.generatePDF = async (req, res) => {
       doc.moveDown(2);
 
       // Room photos
+      const tempFiles = []; // Track temp files for cleanup
+      
       for (const room of report.rooms) {
         if (room.photos && room.photos.length > 0) {
           doc.fontSize(12).font('Helvetica-Bold').text(`Room ${room.roomNumber}`, 50);
@@ -827,6 +853,7 @@ exports.generatePDF = async (req, res) => {
             const imageData = await loadImage(photo.fileUrl);
 
             if (imageData) {
+              tempFiles.push(imageData); // Track for cleanup
               try {
                 // Add image
                 const imgWidth = 500;
@@ -874,6 +901,7 @@ exports.generatePDF = async (req, res) => {
           const imageData = await loadImage(photo.fileUrl);
 
           if (imageData) {
+            tempFiles.push(imageData); // Track for cleanup
             try {
               // Add image
               const imgWidth = 500;
@@ -909,6 +937,11 @@ exports.generatePDF = async (req, res) => {
           }
         }
       }
+      
+      // Cleanup temp files after PDF is sent
+      doc.on('end', () => {
+        tempFiles.forEach(file => cleanupTempFile(file));
+      });
     }
 
     // Finalize PDF
