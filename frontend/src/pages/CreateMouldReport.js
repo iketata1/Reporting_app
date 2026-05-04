@@ -5,7 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/CreateMouldReport.css';
 
 // API URL configuration
-const API_URL = process.env.NODE_ENV === 'production' ? '' : '${API_URL}';
+const API_URL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5002';
 
 function CreateMouldReport() {
   const navigate = useNavigate();
@@ -235,7 +235,7 @@ function CreateMouldReport() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('${API_URL}/api/upload/photos', {
+      const response = await fetch(`/api/upload/photos', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -293,7 +293,7 @@ function CreateMouldReport() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('${API_URL}/api/upload/photos', {
+      const response = await fetch(`/api/upload/photos', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -1214,3 +1214,4 @@ function CreateMouldReport() {
 }
 
 export default CreateMouldReport;
+
