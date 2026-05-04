@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/AdminDashboard.css';
 
+// API URL configuration
+const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5002/api';
+
 function AdminDashboard() {
   const navigate = useNavigate();
   const [stats, setStats] = useState(null);
@@ -28,10 +31,10 @@ function AdminDashboard() {
   const fetchDashboardData = async () => {
     try {
       const [statsRes, usersRes] = await Promise.all([
-        axios.get('http://localhost:5002/api/admin/dashboard-stats', {
+        axios.get(`${API_URL}/admin/dashboard-stats`, {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        axios.get('http://localhost:5002/api/admin/users', {
+        axios.get(`${API_URL}/admin/users`, {
           headers: { Authorization: `Bearer ${token}` }
         })
       ]);
@@ -47,7 +50,7 @@ function AdminDashboard() {
 
   const fetchUserReports = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:5002/api/admin/users/${userId}/reports`, {
+      const response = await axios.get(`${API_URL}/admin/users/${userId}/reports`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUserReports(response.data.reports);
@@ -60,7 +63,7 @@ function AdminDashboard() {
   const toggleUserStatus = async (userId, currentStatus) => {
     try {
       await axios.patch(
-        `http://localhost:5002/api/admin/users/${userId}/status`,
+        `${API_URL}/admin/users/${userId}/status`,
         { isActive: !currentStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
