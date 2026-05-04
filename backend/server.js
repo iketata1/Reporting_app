@@ -44,7 +44,10 @@ if (process.env.NODE_ENV !== 'production') {
 app.use('/auth', require('./routes/auth'));
 app.use('/reports', require('./routes/reports'));
 app.use('/users', require('./routes/users'));
-app.use('/upload', require('./routes/upload'));
+app.use('/upload', (req, res, next) => {
+  console.log('Upload route hit:', req.method, req.path);
+  next();
+}, require('./routes/upload'));
 app.use('/admin', require('./routes/admin'));
 
 // Health check
