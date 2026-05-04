@@ -4,13 +4,15 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
+// PRODUCTION FIX: Do not create local directories in serverless environment
 // Uploads directory (only used in development)
 const uploadsDir = 'D:/Reporting_app_uploads';
 
-// Only create directory in development environment
+// Only create directory in development environment - NEVER in production
 if (process.env.NODE_ENV !== 'production' && !fs.existsSync(uploadsDir)) {
   try {
     fs.mkdirSync(uploadsDir, { recursive: true });
+    console.log('Created uploads directory for development');
   } catch (err) {
     console.log('Could not create uploads directory:', err.message);
   }
