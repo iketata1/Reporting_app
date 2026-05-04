@@ -4,6 +4,9 @@ import { reportAPI } from '../services/api';
 import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/CreateMouldReport.css';
 
+// API URL configuration
+const API_URL = process.env.NODE_ENV === 'production' ? '' : '${API_URL}';
+
 function CreateMouldReport() {
   const navigate = useNavigate();
   const { t, language } = useLanguage();
@@ -232,7 +235,7 @@ function CreateMouldReport() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5002/api/upload/photos', {
+      const response = await fetch('${API_URL}/api/upload/photos', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -245,7 +248,7 @@ function CreateMouldReport() {
       if (response.ok && data.files) {
         const newPhotos = data.files.map(file => ({
           fileName: file.fileName,
-          fileUrl: `http://localhost:5002${file.fileUrl}`,
+          fileUrl: `${API_URL}${file.fileUrl}`,
           description: '',
           uploadDate: new Date()
         }));
@@ -290,7 +293,7 @@ function CreateMouldReport() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5002/api/upload/photos', {
+      const response = await fetch('${API_URL}/api/upload/photos', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -303,7 +306,7 @@ function CreateMouldReport() {
       if (response.ok && data.files) {
         const newPhotos = data.files.map(file => ({
           fileName: file.fileName,
-          fileUrl: `http://localhost:5002${file.fileUrl}`,
+          fileUrl: `${API_URL}${file.fileUrl}`,
           caption: '',
           uploadDate: new Date()
         }));
