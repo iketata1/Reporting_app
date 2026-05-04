@@ -26,7 +26,8 @@
     "cloudinary": "^1.41.0",
     "multer-storage-cloudinary": "^4.0.0",
     "pdfkit": "^0.13.0",
-    "exceljs": "^4.3.0"
+    "exceljs": "^4.3.0",
+    "axios": "^1.5.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
