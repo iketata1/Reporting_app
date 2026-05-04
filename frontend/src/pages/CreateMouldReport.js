@@ -235,7 +235,7 @@ function CreateMouldReport() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`/api/upload/photos', {
+      const response = await fetch(`${API_URL}/api/upload/photos`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -248,7 +248,7 @@ function CreateMouldReport() {
       if (response.ok && data.files) {
         const newPhotos = data.files.map(file => ({
           fileName: file.fileName,
-          fileUrl: `${API_URL}${file.fileUrl}`,
+          fileUrl: file.fileUrl,
           description: '',
           uploadDate: new Date()
         }));
@@ -293,7 +293,7 @@ function CreateMouldReport() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`/api/upload/photos', {
+      const response = await fetch(`${API_URL}/api/upload/photos`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -306,7 +306,7 @@ function CreateMouldReport() {
       if (response.ok && data.files) {
         const newPhotos = data.files.map(file => ({
           fileName: file.fileName,
-          fileUrl: `${API_URL}${file.fileUrl}`,
+          fileUrl: file.fileUrl,
           caption: '',
           uploadDate: new Date()
         }));
