@@ -4,7 +4,6 @@ const ExcelJS = require('exceljs');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
-const os = require('os');
 
 // Helper function to load image (from local or Cloudinary)
 async function loadImage(fileUrl) {
@@ -13,41 +12,23 @@ async function loadImage(fileUrl) {
     try {
       console.log('Downloading image from Cloudinary:', fileUrl);
       const response = await axios.get(fileUrl, { responseType: 'arraybuffer' });
+      console.log('Image downloaded successfully, size:', response.data.byteLength, 'bytes');
       
-      // Save to temp file
-      const tempDir = os.tmpdir();
-      const tempFileName = `temp-${Date.now()}-${Math.random().toString(36).substring(7)}.jpg`;
-      const tempFilePath = path.join(tempDir, tempFileName);
-      
-      fs.writeFileSync(tempFilePath, Buffer.from(response.data));
-      console.log('Image saved to temp file:', tempFilePath);
-      
-      return tempFilePath;
+      // Return buffer directly for PDFKit
+      return Buffer.from(response.data);
     } catch (error) {
       console.error('Error downloading image from Cloudinary:', error.message);
       return null;
     }
   } else {
-    // Local file
+    // Local file - read and return as buffer
     const filename = fileUrl.split('/').pop();
     const imagePath = path.join('D:', 'Reporting_app_uploads', filename);
     if (fs.existsSync(imagePath)) {
-      return imagePath;
+      return fs.readFileSync(imagePath);
     }
     console.error('Local image not found:', imagePath);
     return null;
-  }
-}
-
-// Helper function to clean up temp files
-function cleanupTempFile(filePath) {
-  if (filePath && filePath.includes(os.tmpdir())) {
-    try {
-      fs.unlinkSync(filePath);
-      console.log('Cleaned up temp file:', filePath);
-    } catch (error) {
-      console.error('Error cleaning up temp file:', error.message);
-    }
   }
 }
 
@@ -841,8 +822,6 @@ exports.generatePDF = async (req, res) => {
       doc.moveDown(2);
 
       // Room photos
-      const tempFiles = []; // Track temp files for cleanup
-      
       for (const room of report.rooms) {
         if (room.photos && room.photos.length > 0) {
           doc.fontSize(12).font('Helvetica-Bold').text(`Room ${room.roomNumber}`, 50);
@@ -850,10 +829,10 @@ exports.generatePDF = async (req, res) => {
 
           for (let i = 0; i < room.photos.length; i++) {
             const photo = room.photos[i];
-            const imageData = await loadImage(photo.fileUrl);
+            console.log(`Processing room ${room.roomNumber} photo ${i + 1}:`, photo.fileUrl);
+            const imageBuffer = await loadImage(photo.fileUrl);
 
-            if (imageData) {
-              tempFiles.push(imageData); // Track for cleanup
+            if (imageBuffer) {
               try {
                 // Add image
                 const imgWidth = 500;
@@ -865,7 +844,7 @@ exports.generatePDF = async (req, res) => {
                   doc.moveDown(2);
                 }
 
-                doc.image(imageData, 50, doc.y, {
+                doc.image(imageBuffer, 50, doc.y, {
                   width: imgWidth,
                   height: imgHeight,
                   fit: [imgWidth, imgHeight],
@@ -881,11 +860,12 @@ exports.generatePDF = async (req, res) => {
                 }
 
                 doc.moveDown(2);
+                console.log(`Successfully added room ${room.roomNumber} photo ${i + 1}`);
               } catch (err) {
-                console.error('Error adding image:', err);
+                console.error('Error adding image to PDF:', err);
               }
             } else {
-              console.error('Image not found:', photo.fileUrl);
+              console.error('Failed to load image:', photo.fileUrl);
             }
           }
         }
@@ -898,10 +878,10 @@ exports.generatePDF = async (req, res) => {
 
         for (let i = 0; i < report.generalPhotos.length; i++) {
           const photo = report.generalPhotos[i];
-          const imageData = await loadImage(photo.fileUrl);
+          console.log(`Processing general photo ${i + 1}:`, photo.fileUrl);
+          const imageBuffer = await loadImage(photo.fileUrl);
 
-          if (imageData) {
-            tempFiles.push(imageData); // Track for cleanup
+          if (imageBuffer) {
             try {
               // Add image
               const imgWidth = 500;
@@ -913,7 +893,7 @@ exports.generatePDF = async (req, res) => {
                 doc.moveDown(2);
               }
 
-              doc.image(imageData, 50, doc.y, {
+              doc.image(imageBuffer, 50, doc.y, {
                 width: imgWidth,
                 height: imgHeight,
                 fit: [imgWidth, imgHeight],
@@ -929,19 +909,15 @@ exports.generatePDF = async (req, res) => {
               }
 
               doc.moveDown(2);
+              console.log(`Successfully added general photo ${i + 1}`);
             } catch (err) {
-              console.error('Error adding general photo:', err);
+              console.error('Error adding general photo to PDF:', err);
             }
           } else {
-            console.error('General photo not found:', photo.fileUrl);
+            console.error('Failed to load general photo:', photo.fileUrl);
           }
         }
       }
-      
-      // Cleanup temp files after PDF is sent
-      doc.on('end', () => {
-        tempFiles.forEach(file => cleanupTempFile(file));
-      });
     }
 
     // Finalize PDF
