@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../middleware/auth');
+const { auth } = require('../middleware/auth');
 const adminController = require('../controllers/adminController');
 
 // Middleware to check if user is admin
