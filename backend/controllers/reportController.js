@@ -3,6 +3,29 @@ const PDFDocument = require('pdfkit');
 const ExcelJS = require('exceljs');
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
+
+// Helper function to load image (from local or Cloudinary)
+async function loadImage(fileUrl) {
+  // Check if it's a Cloudinary URL
+  if (fileUrl.startsWith('http://') || fileUrl.startsWith('https://')) {
+    try {
+      const response = await axios.get(fileUrl, { responseType: 'arraybuffer' });
+      return Buffer.from(response.data);
+    } catch (error) {
+      console.error('Error downloading image from Cloudinary:', error.message);
+      return null;
+    }
+  } else {
+    // Local file
+    const filename = fileUrl.split('/').pop();
+    const imagePath = path.join('D:', 'Reporting_app_uploads', filename);
+    if (fs.existsSync(imagePath)) {
+      return imagePath;
+    }
+    return null;
+  }
+}
 
 // Helper function to generate personalized explanations based on room data
 function generateCO2Explanation(rooms) {
@@ -382,31 +405,8 @@ exports.generatePDF = async (req, res) => {
     }
 
     // Investigation Findings
-    doc.moveDown(3);
-    doc.rect(50, doc.y, doc.page.width - 100, 2).fill(colors.primary);
-    doc.moveDown(0.5);
-    
-    doc.fontSize(14)
-       .font('Helvetica-Bold')
-       .fillColor(colors.secondary)
-       .text('Investigation Findings', 50);
-    
-    doc.moveDown(0.5);
-    doc.rect(50, doc.y, doc.page.width - 100, 2).fill(colors.primary);
-    doc.moveDown(1);
-
-    if (report.investigationFindings && report.investigationFindings.length > 0) {
-      doc.fontSize(10).font('Helvetica').fillColor(colors.text);
-      report.investigationFindings.forEach((finding) => {
-        doc.text('• ', 60, doc.y, { continued: true })
-           .text(finding.finding, { width: doc.page.width - 120, align: 'justify' });
-        doc.moveDown(0.5);
-      });
-    }
-
-    // Investigation Findings
     if (report.investigationFindingsText) {
-      doc.moveDown(2);
+      doc.moveDown(3);
       doc.rect(50, doc.y, doc.page.width - 100, 2).fill(colors.primary);
       doc.moveDown(0.5);
       
@@ -824,14 +824,9 @@ exports.generatePDF = async (req, res) => {
 
           for (let i = 0; i < room.photos.length; i++) {
             const photo = room.photos[i];
-            // Extract filename from URL and construct path to D drive
-            const filename = photo.fileUrl.split('/').pop();
-            const imagePath = path.join('D:', 'Reporting_app_uploads', filename);
+            const imageData = await loadImage(photo.fileUrl);
 
-            console.log('Trying to load image:', imagePath);
-            console.log('File exists:', fs.existsSync(imagePath));
-
-            if (fs.existsSync(imagePath)) {
+            if (imageData) {
               try {
                 // Add image
                 const imgWidth = 500;
@@ -843,7 +838,7 @@ exports.generatePDF = async (req, res) => {
                   doc.moveDown(2);
                 }
 
-                doc.image(imagePath, 50, doc.y, {
+                doc.image(imageData, 50, doc.y, {
                   width: imgWidth,
                   height: imgHeight,
                   fit: [imgWidth, imgHeight],
@@ -860,10 +855,10 @@ exports.generatePDF = async (req, res) => {
 
                 doc.moveDown(2);
               } catch (err) {
-                console.error('Error adding image:', imagePath, err);
+                console.error('Error adding image:', err);
               }
             } else {
-              console.error('Image not found:', imagePath);
+              console.error('Image not found:', photo.fileUrl);
             }
           }
         }
@@ -876,14 +871,9 @@ exports.generatePDF = async (req, res) => {
 
         for (let i = 0; i < report.generalPhotos.length; i++) {
           const photo = report.generalPhotos[i];
-          // Extract filename from URL and construct path to D drive
-          const filename = photo.fileUrl.split('/').pop();
-          const imagePath = path.join('D:', 'Reporting_app_uploads', filename);
+          const imageData = await loadImage(photo.fileUrl);
 
-          console.log('Trying to load general photo:', imagePath);
-          console.log('File exists:', fs.existsSync(imagePath));
-
-          if (fs.existsSync(imagePath)) {
+          if (imageData) {
             try {
               // Add image
               const imgWidth = 500;
@@ -895,7 +885,7 @@ exports.generatePDF = async (req, res) => {
                 doc.moveDown(2);
               }
 
-              doc.image(imagePath, 50, doc.y, {
+              doc.image(imageData, 50, doc.y, {
                 width: imgWidth,
                 height: imgHeight,
                 fit: [imgWidth, imgHeight],
@@ -912,10 +902,10 @@ exports.generatePDF = async (req, res) => {
 
               doc.moveDown(2);
             } catch (err) {
-              console.error('Error adding general photo:', imagePath, err);
+              console.error('Error adding general photo:', err);
             }
           } else {
-            console.error('General photo not found:', imagePath);
+            console.error('General photo not found:', photo.fileUrl);
           }
         }
       }
