@@ -97,18 +97,40 @@
 /* Mobile Responsive */
 @media (max-width: 480px) {
   .login-container {
-    padding: 15px;
+    padding: 10px;
   }
   
   .login-card {
-    padding: 30px 20px;
+    padding: 25px 15px;
   }
   
   .login-card h1 {
-    font-size: 24px;
+    font-size: 20px;
+    margin-bottom: 8px;
   }
   
   .login-card h2 {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  
+  .login-card input {
+    padding: 10px 12px;
     font-size: 14px;
+  }
+  
+  .login-card button {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  .error-message {
+    font-size: 12px;
+    padding: 8px;
+  }
+  
+  .toggle-form {
+    font-size: 12px;
+    margin-top: 15px;
   }
 }

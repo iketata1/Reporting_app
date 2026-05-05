@@ -93,32 +93,41 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .filters {
-    padding: 15px 20px;
+    padding: 12px 15px;
     flex-direction: column;
+    gap: 8px;
   }
   
   .filters select,
   .filters input {
     width: 100%;
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 14px;
+    padding: 8px 10px;
   }
   
   .reports-table-wrapper {
-    margin: 15px;
+    margin: 12px 10px;
   }
   
   .reports-table th,
   .reports-table td {
-    padding: 10px 8px;
-    font-size: 13px;
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+  
+  .reports-table th {
+    font-size: 10px;
   }
   
   .actions {
     flex-direction: column;
+    gap: 6px;
   }
   
   .actions button {
     width: 100%;
+    padding: 6px 10px;
+    font-size: 11px;
   }
 }
 
@@ -129,7 +138,7 @@
   
   .reports-table th,
   .reports-table td {
-    padding: 8px 6px;
-    font-size: 12px;
+    padding: 6px 4px;
+    font-size: 10px;
   }
 }
