@@ -9,6 +9,7 @@
   display: flex;
   gap: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
 }
 
 .filters select,
@@ -17,6 +18,7 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 14px;
+  min-width: 150px;
 }
 
 .filters select:focus,
@@ -25,14 +27,19 @@
   border-color: #667eea;
 }
 
+.reports-table-wrapper {
+  overflow-x: auto;
+  margin: 20px 40px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .reports-table {
   width: 100%;
   background: white;
-  margin: 20px 40px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-collapse: collapse;
-  overflow: hidden;
+  min-width: 600px;
 }
 
 .reports-table th {
@@ -41,6 +48,7 @@
   background: #f8f9fa;
   color: #666;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .reports-table td {
@@ -55,16 +63,19 @@
 .actions {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .actions button {
-  padding: 6px 12px;
+  padding: 8px 14px;
   background: #667eea;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 13px;
+  white-space: nowrap;
+  font-weight: 600;
 }
 
 .actions button:hover {
@@ -77,4 +88,48 @@
 
 .actions .delete-btn:hover {
   background: #c82333;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .filters {
+    padding: 15px 20px;
+    flex-direction: column;
+  }
+  
+  .filters select,
+  .filters input {
+    width: 100%;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .reports-table-wrapper {
+    margin: 15px;
+  }
+  
+  .reports-table th,
+  .reports-table td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .reports-table {
+    min-width: 500px;
+  }
+  
+  .reports-table th,
+  .reports-table td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
 }

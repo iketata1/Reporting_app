@@ -694,8 +694,20 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .create-mould-report {
+    padding: 20px 15px;
+  }
+  
+  .page-header-form h1 {
+    font-size: 24px;
+  }
+  
+  .page-header-form p {
+    font-size: 14px;
+  }
+  
   .mould-report-form {
-    padding: 30px 20px;
+    padding: 25px 15px;
   }
   
   .navbar {
@@ -704,36 +716,148 @@
     gap: 15px;
   }
   
+  .navbar h1 {
+    font-size: 18px;
+  }
+  
   .progress-bar {
-    padding: 15px 20px;
-    flex-direction: column;
+    padding: 15px 10px;
+    flex-wrap: wrap;
   }
   
   .progress-bar .step {
-    border-bottom: none;
-    border-left: 4px solid #e2e8f0;
-    text-align: left;
-    padding-left: 15px;
+    font-size: 12px;
+    padding: 10px 5px;
+    min-width: 80px;
   }
   
-  .progress-bar .step.active {
-    border-left-color: #667eea;
+  .form-step h2 {
+    font-size: 22px;
+  }
+  
+  .form-step h3 {
+    font-size: 16px;
+  }
+  
+  .form-step h4 {
+    font-size: 14px;
   }
   
   .form-row {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
   
   .checkbox-group {
     grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 15px;
+  }
+  
+  .room-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .room-card .btn-remove {
+    width: 100%;
+  }
+  
+  .add-room-section {
+    padding: 20px 15px;
   }
   
   .form-actions {
     flex-direction: column-reverse;
+    gap: 10px;
   }
   
   .form-actions button {
     width: 100%;
+    padding: 14px 20px;
+  }
+  
+  .photos-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .photo-item img {
+    height: 200px;
+  }
+  
+  .upload-area {
+    padding: 25px 15px;
+  }
+  
+  .upload-icon {
+    font-size: 36px;
+  }
+  
+  .upload-label p {
+    font-size: 14px;
+  }
+  
+  .report-summary {
+    padding: 20px 15px;
+  }
+  
+  .report-summary h3 {
+    font-size: 20px;
+  }
+  
+  .report-summary p {
+    font-size: 14px;
+  }
+  
+  .air-samples-list {
+    flex-direction: column;
+  }
+  
+  .sample-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .add-sample-form {
+    padding: 15px;
+  }
+  
+  .finding-item,
+  .recommendation-item {
+    padding: 15px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .create-mould-report {
+    padding: 15px 10px;
+  }
+  
+  .mould-report-form {
+    padding: 20px 12px;
+  }
+  
+  .page-header-form h1 {
+    font-size: 20px;
+  }
+  
+  .progress-bar {
+    padding: 10px;
+  }
+  
+  .progress-bar .step {
+    font-size: 11px;
+    padding: 8px 4px;
+    min-width: 70px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
   }
 }
 

@@ -4,6 +4,7 @@
   align-items: center;
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
 }
 
 .login-card {
@@ -19,6 +20,7 @@
   text-align: center;
   color: #333;
   margin-bottom: 10px;
+  font-size: 28px;
 }
 
 .login-card h2 {
@@ -26,6 +28,7 @@
   color: #666;
   margin-bottom: 30px;
   font-weight: normal;
+  font-size: 16px;
 }
 
 .login-card form {
@@ -38,7 +41,7 @@
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 16px; /* Prevents zoom on iOS */
 }
 
 .login-card input:focus {
@@ -47,7 +50,7 @@
 }
 
 .login-card button {
-  padding: 12px;
+  padding: 14px;
   background: #667eea;
   color: white;
   border: none;
@@ -55,6 +58,7 @@
   font-size: 16px;
   cursor: pointer;
   transition: background 0.3s;
+  font-weight: 600;
 }
 
 .login-card button:hover {
@@ -73,16 +77,38 @@
   border-radius: 5px;
   margin-bottom: 15px;
   text-align: center;
+  font-size: 14px;
 }
 
 .toggle-form {
   text-align: center;
   margin-top: 20px;
   color: #666;
+  font-size: 14px;
 }
 
 .toggle-form span {
   color: #667eea;
   cursor: pointer;
   text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 15px;
+  }
+  
+  .login-card {
+    padding: 30px 20px;
+  }
+  
+  .login-card h1 {
+    font-size: 24px;
+  }
+  
+  .login-card h2 {
+    font-size: 14px;
+  }
 }
