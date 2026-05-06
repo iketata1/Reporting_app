@@ -276,7 +276,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .sidebar {
-    width: 80px;
+    width: 70px;
   }
   
   .sidebar.collapsed {
@@ -285,17 +285,69 @@
     overflow: hidden;
   }
   
+  .sidebar-header {
+    padding: 12px 8px;
+  }
+  
+  .logo-icon {
+    font-size: 24px;
+  }
+  
+  .collapse-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  
+  .sidebar-user {
+    padding: 12px 8px;
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .sidebar-nav {
+    padding: 12px 6px;
+  }
+  
+  .nav-item {
+    padding: 10px 8px;
+    margin-bottom: 6px;
+    justify-content: center;
+  }
+  
+  .nav-icon {
+    font-size: 18px;
+  }
+  
+  .sidebar-footer {
+    padding: 12px 8px;
+  }
+  
+  .language-buttons {
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .lang-btn {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+  
+  .logout-btn {
+    padding: 10px 8px;
+    justify-content: center;
+    font-size: 14px;
+  }
+  
   .logo-text,
   .user-info,
   .nav-label,
   .language-selector label {
     display: none;
-  }
-  
-  .nav-item,
-  .logout-btn {
-    justify-content: center;
-    padding: 12px;
   }
   
   .nav-item span:not(.nav-icon),

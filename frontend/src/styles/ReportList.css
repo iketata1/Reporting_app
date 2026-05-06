@@ -90,55 +90,55 @@
   background: #c82333;
 }
 
-/* Mobile Responsive */
+/* Mobile Responsive - Ultra Compact */
 @media (max-width: 768px) {
   .filters {
-    padding: 12px 15px;
+    padding: 10px 12px;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
   }
   
   .filters select,
   .filters input {
     width: 100%;
-    font-size: 14px;
-    padding: 8px 10px;
+    font-size: 13px;
+    padding: 7px 9px;
   }
   
   .reports-table-wrapper {
-    margin: 12px 10px;
-  }
-  
-  .reports-table th,
-  .reports-table td {
-    padding: 8px 6px;
-    font-size: 11px;
-  }
-  
-  .reports-table th {
-    font-size: 10px;
-  }
-  
-  .actions {
-    flex-direction: column;
-    gap: 6px;
-  }
-  
-  .actions button {
-    width: 100%;
-    padding: 6px 10px;
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 480px) {
-  .reports-table {
-    min-width: 500px;
+    margin: 10px 8px;
   }
   
   .reports-table th,
   .reports-table td {
     padding: 6px 4px;
     font-size: 10px;
+  }
+  
+  .reports-table th {
+    font-size: 9px;
+  }
+  
+  .actions {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .actions button {
+    width: 100%;
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reports-table {
+    min-width: 450px;
+  }
+  
+  .reports-table th,
+  .reports-table td {
+    padding: 5px 3px;
+    font-size: 9px;
   }
 }

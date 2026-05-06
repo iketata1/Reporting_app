@@ -450,172 +450,172 @@
   }
 }
 
-/* Responsive */
+/* Responsive - Ultra Compact */
 @media (max-width: 768px) {
   .statistics-page {
-    padding: 15px 10px;
+    padding: 10px 8px;
   }
 
   .page-header h1 {
-    font-size: 22px;
-    margin-bottom: 5px;
+    font-size: 18px;
+    margin-bottom: 3px;
   }
   
   .page-header p {
-    font-size: 13px;
+    font-size: 11px;
   }
 
   .buildings-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
 
   .building-card {
-    padding: 15px;
+    padding: 12px;
   }
 
   .building-icon {
-    font-size: 24px;
+    font-size: 20px;
   }
   
   .property-type-badge {
-    padding: 4px 10px;
-    font-size: 10px;
+    padding: 3px 8px;
+    font-size: 9px;
   }
 
   .building-name {
-    font-size: 16px;
-    margin-bottom: 6px;
+    font-size: 14px;
+    margin-bottom: 5px;
   }
   
   .building-address {
-    font-size: 12px;
-    min-height: 36px;
-    margin-bottom: 12px;
+    font-size: 11px;
+    min-height: 32px;
+    margin-bottom: 10px;
   }
   
   .building-card-footer {
-    font-size: 11px;
-    padding-top: 12px;
+    font-size: 10px;
+    padding-top: 10px;
   }
 
   .building-info-card {
-    padding: 15px;
+    padding: 12px;
   }
 
   .info-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
   }
   
   .info-icon {
-    font-size: 36px;
+    font-size: 30px;
   }
 
   .info-details h2 {
-    font-size: 18px;
-    margin-bottom: 8px;
+    font-size: 16px;
+    margin-bottom: 6px;
   }
   
   .address {
-    font-size: 13px;
-    margin-bottom: 8px;
+    font-size: 12px;
+    margin-bottom: 6px;
   }
   
   .property-badge {
-    padding: 4px 10px;
-    font-size: 11px;
+    padding: 3px 8px;
+    font-size: 10px;
   }
 
   .info-stats {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 8px;
   }
   
   .info-stat {
-    padding: 12px;
+    padding: 10px;
   }
   
   .info-stat .stat-value {
-    font-size: 24px;
-    margin-bottom: 4px;
+    font-size: 20px;
+    margin-bottom: 3px;
   }
   
   .info-stat .stat-label {
-    font-size: 10px;
+    font-size: 9px;
   }
   
   .averages-section,
   .rooms-section {
-    padding: 15px;
+    padding: 12px 10px;
   }
   
   .averages-section h3,
   .rooms-section h3 {
-    font-size: 16px;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
+    font-size: 14px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
   }
 
   .averages-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
 
   .avg-card {
-    padding: 15px 12px;
-    gap: 12px;
+    padding: 12px 10px;
+    gap: 10px;
   }
 
   .avg-icon {
-    font-size: 32px;
+    font-size: 28px;
   }
   
   .avg-label {
-    font-size: 9px;
-    margin-bottom: 6px;
+    font-size: 8px;
+    margin-bottom: 5px;
   }
 
   .avg-main-value {
-    font-size: 28px;
-    margin-bottom: 6px;
+    font-size: 24px;
+    margin-bottom: 5px;
   }
   
   .avg-main-value .unit {
-    font-size: 14px;
+    font-size: 12px;
   }
   
   .avg-minmax {
-    font-size: 10px;
+    font-size: 9px;
   }
 
   .rooms-table {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .rooms-table th,
   .rooms-table td {
-    padding: 10px 6px;
+    padding: 8px 5px;
   }
   
   .rooms-table th {
-    font-size: 10px;
+    font-size: 9px;
   }
 
   .value-badge {
-    padding: 4px 8px;
-    font-size: 10px;
+    padding: 3px 6px;
+    font-size: 9px;
   }
   
   .room-name {
-    font-size: 12px;
+    font-size: 11px;
   }
   
   .report-num {
-    font-size: 11px;
+    font-size: 10px;
   }
 }
 
@@ -629,6 +629,6 @@
   }
   
   .rooms-table {
-    min-width: 500px;
+    min-width: 450px;
   }
 }

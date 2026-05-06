@@ -692,272 +692,279 @@
   border-top: 3px solid #e0e0e0;
 }
 
-/* Responsive Design - Mobile Optimized */
+/* Responsive Design - Ultra Compact Mobile */
 @media (max-width: 768px) {
   .create-mould-report {
-    padding: 15px 10px;
+    padding: 10px 8px;
   }
   
   .page-header-form h1 {
-    font-size: 20px;
-    margin-bottom: 5px;
+    font-size: 16px;
+    margin-bottom: 3px;
   }
   
   .page-header-form p {
-    font-size: 12px;
-  }
-  
-  .mould-report-form {
-    padding: 20px 12px;
-    border-radius: 12px;
-  }
-  
-  .navbar {
-    padding: 12px 15px;
-    flex-direction: row;
-    gap: 10px;
-  }
-  
-  .navbar h1 {
-    font-size: 16px;
-  }
-  
-  .navbar button {
-    padding: 8px 16px;
-    font-size: 12px;
-  }
-  
-  .progress-bar {
-    padding: 12px 8px;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-  
-  .progress-bar .step {
-    font-size: 10px;
-    padding: 8px 4px;
-    min-width: 70px;
-  }
-  
-  .form-step h2 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-  }
-  
-  .form-step h3 {
-    font-size: 14px;
-    margin: 20px 0 12px;
-  }
-  
-  .form-step h4 {
-    font-size: 13px;
-    margin: 15px 0 10px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    font-size: 12px;
-    margin-bottom: 6px;
-  }
-  
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    padding: 10px 12px;
-    font-size: 14px;
-    border-radius: 6px;
-  }
-  
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  
-  .checkbox-group {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 12px;
-  }
-  
-  .checkbox-group label {
-    padding: 8px 12px;
-    font-size: 12px;
-  }
-  
-  .room-card {
-    padding: 15px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-  }
-  
-  .room-card h4 {
-    font-size: 16px;
-    margin-bottom: 6px;
-  }
-  
-  .room-card p {
     font-size: 11px;
-  }
-  
-  .room-card .btn-remove {
-    padding: 6px 12px;
-    font-size: 11px;
-  }
-  
-  .add-room-section {
-    padding: 15px 12px;
-  }
-  
-  .btn-add-room {
-    padding: 12px;
-    font-size: 14px;
-    margin-top: 15px;
-  }
-  
-  .form-actions {
-    flex-direction: column-reverse;
-    gap: 8px;
-    margin-top: 20px;
-    padding-top: 15px;
-  }
-  
-  .form-actions button {
-    width: 100%;
-    padding: 12px 20px;
-    font-size: 14px;
-  }
-  
-  .photos-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  
-  .photo-item img {
-    height: 120px;
-  }
-  
-  .photo-overlay {
-    padding: 8px;
-  }
-  
-  .photo-description {
-    padding: 6px 10px;
-    font-size: 11px;
-    margin-bottom: 6px;
-  }
-  
-  .btn-remove-photo {
-    padding: 6px;
-    font-size: 11px;
-  }
-  
-  .upload-area {
-    padding: 20px 12px;
-  }
-  
-  .upload-icon {
-    font-size: 32px;
-    margin-bottom: 10px;
-  }
-  
-  .upload-label p {
-    font-size: 13px;
-    margin: 8px 0;
-  }
-  
-  .upload-label span {
-    font-size: 11px;
-  }
-  
-  .report-summary {
-    padding: 15px 12px;
-    margin: 20px 0;
-  }
-  
-  .report-summary h3 {
-    font-size: 16px;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-  }
-  
-  .report-summary p {
-    font-size: 12px;
-    margin: 8px 0;
-  }
-  
-  .air-samples-list {
-    gap: 8px;
-  }
-  
-  .sample-card {
-    padding: 10px 12px;
-    gap: 8px;
-  }
-  
-  .sample-card p {
-    font-size: 12px;
-  }
-  
-  .sample-card .status-badge {
-    padding: 3px 8px;
-    font-size: 10px;
-  }
-  
-  .add-sample-form {
-    padding: 12px;
-  }
-  
-  .btn-add-sample,
-  .btn-add {
-    padding: 8px 16px;
-    font-size: 12px;
-    margin-bottom: 15px;
-  }
-  
-  .finding-item,
-  .recommendation-item {
-    padding: 12px;
-    margin-bottom: 12px;
-  }
-  
-  .btn-remove {
-    padding: 6px 12px;
-    font-size: 11px;
-  }
-  
-  .rooms-list h3 {
-    font-size: 16px;
-    margin-bottom: 15px;
-    padding: 12px;
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 480px) {
-  .create-mould-report {
-    padding: 12px 8px;
   }
   
   .mould-report-form {
     padding: 15px 10px;
+    border-radius: 8px;
   }
   
-  .page-header-form h1 {
-    font-size: 18px;
+  .navbar {
+    padding: 10px 12px;
+    flex-direction: row;
+    gap: 8px;
+  }
+  
+  .navbar h1 {
+    font-size: 14px;
+  }
+  
+  .navbar button {
+    padding: 6px 12px;
+    font-size: 11px;
   }
   
   .progress-bar {
-    padding: 10px 6px;
+    padding: 8px 6px;
+    flex-wrap: wrap;
+    gap: 4px;
   }
   
   .progress-bar .step {
     font-size: 9px;
     padding: 6px 3px;
     min-width: 60px;
+  }
+  
+  .form-step h2 {
+    font-size: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+  }
+  
+  .form-step h3 {
+    font-size: 13px;
+    margin: 15px 0 10px;
+  }
+  
+  .form-step h4 {
+    font-size: 12px;
+    margin: 12px 0 8px;
+  }
+  
+  .form-group {
+    margin-bottom: 12px;
+  }
+  
+  .form-group label {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 8px 10px;
+    font-size: 13px;
+    border-radius: 5px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .checkbox-group {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 10px;
+  }
+  
+  .checkbox-group label {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .room-card {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  
+  .room-card h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .room-card p {
+    font-size: 10px;
+    margin: 2px 0;
+  }
+  
+  .room-card .btn-remove {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+  
+  .add-room-section {
+    padding: 12px 10px;
+  }
+  
+  .btn-add-room {
+    padding: 10px;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  
+  .form-actions {
+    flex-direction: column-reverse;
+    gap: 8px;
+    margin-top: 15px;
+    padding-top: 12px;
+  }
+  
+  .form-actions button {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  
+  .photos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  
+  .photo-item img {
+    height: 100px;
+  }
+  
+  .photo-overlay {
+    padding: 6px;
+  }
+  
+  .photo-description {
+    padding: 5px 8px;
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .btn-remove-photo {
+    padding: 5px;
+    font-size: 10px;
+  }
+  
+  .upload-area {
+    padding: 15px 10px;
+  }
+  
+  .upload-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  
+  .upload-label p {
+    font-size: 12px;
+    margin: 6px 0;
+  }
+  
+  .upload-label span {
+    font-size: 10px;
+  }
+  
+  .report-summary {
+    padding: 12px 10px;
+    margin: 15px 0;
+  }
+  
+  .report-summary h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+  }
+  
+  .report-summary p {
+    font-size: 11px;
+    margin: 6px 0;
+  }
+  
+  .air-samples-list {
+    gap: 6px;
+    margin: 10px 0;
+  }
+  
+  .sample-card {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+  
+  .sample-card p {
+    font-size: 11px;
+  }
+  
+  .sample-card .status-badge {
+    padding: 2px 6px;
+    font-size: 9px;
+  }
+  
+  .add-sample-form {
+    padding: 10px;
+  }
+  
+  .btn-add-sample,
+  .btn-add {
+    padding: 7px 14px;
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+  
+  .finding-item,
+  .recommendation-item {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .btn-remove {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+  
+  .rooms-list h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+    padding: 10px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .create-mould-report {
+    padding: 8px 6px;
+  }
+  
+  .mould-report-form {
+    padding: 12px 8px;
+  }
+  
+  .page-header-form h1 {
+    font-size: 15px;
+  }
+  
+  .progress-bar {
+    padding: 6px 4px;
+  }
+  
+  .progress-bar .step {
+    font-size: 8px;
+    padding: 5px 2px;
+    min-width: 55px;
   }
   
   .photos-grid {
