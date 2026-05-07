@@ -22,4 +22,7 @@ module.exports = {
     },
   },
   plugins: [],
+  corePlugins: {
+    preflight: false, // Disable Tailwind's base styles to avoid conflicts
+  },
 }
