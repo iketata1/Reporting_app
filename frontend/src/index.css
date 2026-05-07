@@ -21,3 +21,274 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Mobile-only responsive utilities */
+@media (max-width: 768px) {
+  /* Compact text sizes */
+  .dashboard-page .page-header h1,
+  .admin-header h1,
+  .page-header h1 {
+    font-size: 18px !important;
+  }
+  
+  .dashboard-page .page-header p,
+  .admin-header p,
+  .page-header p {
+    font-size: 11px !important;
+  }
+  
+  /* Compact stats */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  
+  .stat-card {
+    padding: 12px 10px !important;
+  }
+  
+  .stat-icon {
+    font-size: 24px !important;
+  }
+  
+  .stat-number,
+  .stat-value {
+    font-size: 20px !important;
+  }
+  
+  .stat-info h3,
+  .stat-content h3 {
+    font-size: 9px !important;
+  }
+  
+  /* Compact forms */
+  .mould-report-form {
+    padding: 15px 10px !important;
+  }
+  
+  .form-group label {
+    font-size: 11px !important;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 8px 10px !important;
+    font-size: 13px !important;
+  }
+  
+  .form-step h2 {
+    font-size: 15px !important;
+  }
+  
+  .form-step h3 {
+    font-size: 13px !important;
+  }
+  
+  /* Compact buttons */
+  .btn-action,
+  .btn-view-all,
+  .btn-next,
+  .btn-submit,
+  .btn-add,
+  .btn-view,
+  .btn-toggle {
+    padding: 6px 12px !important;
+    font-size: 11px !important;
+  }
+  
+  /* Compact tables */
+  .reports-table th,
+  .reports-table td,
+  .users-table th,
+  .users-table td,
+  .rooms-table th,
+  .rooms-table td {
+    padding: 6px 4px !important;
+    font-size: 10px !important;
+  }
+  
+  .reports-table th,
+  .users-table th,
+  .rooms-table th {
+    font-size: 9px !important;
+  }
+  
+  /* Compact badges */
+  .status-badge,
+  .type-badge,
+  .role-badge,
+  .value-badge,
+  .property-type-badge {
+    padding: 2px 6px !important;
+    font-size: 9px !important;
+  }
+  
+  /* Compact sections */
+  .recent-reports-section,
+  .users-section,
+  .user-reports-section,
+  .rooms-section,
+  .averages-section,
+  .building-info-card {
+    padding: 12px 10px !important;
+  }
+  
+  .section-header h2 {
+    font-size: 15px !important;
+  }
+  
+  /* Compact cards */
+  .room-card,
+  .building-card,
+  .avg-card {
+    padding: 12px !important;
+  }
+  
+  .room-card h4,
+  .building-name {
+    font-size: 14px !important;
+  }
+  
+  .room-card p,
+  .building-address {
+    font-size: 10px !important;
+  }
+  
+  /* Compact grids */
+  .buildings-grid,
+  .averages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  
+  .photos-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  
+  .photo-item img {
+    height: 100px !important;
+  }
+  
+  /* Compact login */
+  .login-card {
+    padding: 20px 12px !important;
+  }
+  
+  .login-card h1 {
+    font-size: 18px !important;
+  }
+  
+  .login-card h2 {
+    font-size: 12px !important;
+  }
+  
+  /* Compact sidebar */
+  .sidebar {
+    width: 70px !important;
+  }
+  
+  .main-content {
+    margin-left: 70px !important;
+  }
+  
+  /* Compact progress bar */
+  .progress-bar {
+    padding: 8px 6px !important;
+    gap: 4px !important;
+  }
+  
+  .progress-bar .step {
+    font-size: 9px !important;
+    padding: 6px 3px !important;
+  }
+  
+  /* Compact page padding */
+  .dashboard-page,
+  .admin-dashboard,
+  .statistics-page,
+  .create-mould-report {
+    padding: 10px 8px !important;
+  }
+  
+  /* Form actions */
+  .form-actions {
+    flex-direction: column-reverse !important;
+    gap: 8px !important;
+  }
+  
+  .form-actions button {
+    width: 100% !important;
+  }
+  
+  /* View tabs */
+  .view-tabs {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  
+  .view-tabs button {
+    padding: 8px 14px !important;
+    font-size: 11px !important;
+  }
+  
+  /* Sample cards */
+  .sample-card {
+    padding: 8px 10px !important;
+    font-size: 11px !important;
+  }
+  
+  /* Report summary */
+  .report-summary {
+    padding: 12px 10px !important;
+  }
+  
+  .report-summary h3 {
+    font-size: 14px !important;
+  }
+  
+  .report-summary p {
+    font-size: 11px !important;
+  }
+  
+  /* Avg values */
+  .avg-main-value {
+    font-size: 24px !important;
+  }
+  
+  .avg-icon {
+    font-size: 28px !important;
+  }
+  
+  .avg-label {
+    font-size: 8px !important;
+  }
+  
+  /* Building card footer */
+  .building-card-footer {
+    font-size: 10px !important;
+  }
+  
+  /* Info stats */
+  .info-stat .stat-value {
+    font-size: 20px !important;
+  }
+  
+  .info-stat .stat-label {
+    font-size: 9px !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .stats-grid,
+  .buildings-grid,
+  .averages-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .photos-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
